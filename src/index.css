@@ -12,3 +12,20 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.header {
+  display: flex;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.gifyTitle {
+  width: 100%;
+}
+
+.gifsContainer {
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+  padding: 20px;
+}

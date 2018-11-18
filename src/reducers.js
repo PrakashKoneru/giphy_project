@@ -5,7 +5,14 @@ const initialState = {
 }
 
 const setFavorites = (state, payload) => {
-  return { ...state, favorites: [...state.favorites, {...payload}] }
+  let uniqFavorites;
+  const checkPayload = state.favorites.find((gif) => gif.id === payload.id);
+  if (checkPayload) {
+    uniqFavorites = state.favorites.filter((gif) => gif.id !== payload.id)
+  } else {
+    uniqFavorites = [...state.favorites, {...payload}]
+  }
+  return { ...state, favorites: [...uniqFavorites] }
 }
 
 export default function counter(state = initialState, action) {

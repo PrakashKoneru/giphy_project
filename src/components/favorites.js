@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import GiphyList from './renderGiphyList';
 
 class Favorites extends Component {
   render() {
     const { favorites } = this.props;
     return (
-      <div>Coming up</div>
+      <GiphyList list={favorites} />
     );
   }
 }

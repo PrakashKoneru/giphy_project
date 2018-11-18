@@ -11,7 +11,7 @@ class Main extends Component {
         <div className="header">
           <Link to="/" className="gifyLogo">Gify Logo</Link>
           <div className="gifyTitle">The Ultimate gif</div>
-          <Link to="/favorities" className="gifyFavorites">My Favorities</Link>
+          <Link to="/favorites" className="gifyFavorites">My Favorities</Link>
         </div>
         { pathname === '/' ? <GiphySearch /> : children }
       </Fragment>

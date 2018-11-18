@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import { Grid } from '@material-ui/core';
 
-class App extends Component {
+class GiphySearch extends Component {
   state = {
     searchText: '',
     results: null
@@ -17,12 +16,7 @@ class App extends Component {
   render() {
     const { searchText, results } = this.state;
     return (
-      <div>
-        <div className="header">
-          <div className="gifyLogo">Gify Logo</div>
-          <div className="gifyTitle">The Ultimate gif</div>
-          <div className="gifyFavorites">My Favorities</div>
-        </div>
+      <Fragment>
         <div>
           <input
             type="text"
@@ -35,13 +29,13 @@ class App extends Component {
         <Grid container spacing={8}>
           {results && results.map((gif, index) => (
             <Grid item xs={12} sm={3} className="gifCard">
-              <img src={gif.images.original.url} height={200} width="100%"/>
+              <img src={gif.images.original.url} height={200} width="100%" alt="giphySearch"/>
             </Grid>
           ))}
         </Grid>
-      </div>
+      </Fragment>
     );
   }
 }
 
-export default App;
+export default GiphySearch;

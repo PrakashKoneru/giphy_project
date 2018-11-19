@@ -1,21 +1,20 @@
 import React, { Component, Fragment } from 'react';
-import axios from 'axios';
 import GiphyList from './renderGiphyList';
+import { fetchDataAction } from '../../src/action.creators';
+import { connect } from 'react-redux';
 
 class GiphySearch extends Component {
   state = {
     searchText: '',
-    results: null
   }
   setInput = ({target: { value }}) => this.setState({ searchText: value });
   fetchData = () => {
-    axios
-    .get(`https://api.giphy.com/v1/gifs/search?api_key=GZKGwdu6xlIM0iV58yFKJOFLqj0NLXFw&q=${this.state.searchText}`)
-    .then(({ data: { data }}) => this.setState({ results: data }))
+    this.props.fetchDataAction(this.state.searchText);
   }
 
   render() {
-    const { searchText, results } = this.state;
+    const { searchText } = this.state;
+    const { results } = this.props;
     return (
       <Fragment>
         <div>
@@ -33,4 +32,7 @@ class GiphySearch extends Component {
   }
 }
 
-export default GiphySearch;
+const mapStateToProps = (state) => ({
+  results: state.results
+})
+export default connect(mapStateToProps, { fetchDataAction })(GiphySearch);

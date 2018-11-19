@@ -6,13 +6,13 @@ class Favorites extends Component {
   render() {
     const { favorites } = this.props;
     return (
-      <GiphyList list={favorites} />
+      <GiphyList list={favorites} filterFavs/>
     );
   }
 }
 
 const mapStateToProps = (state) => ({
-  favorites: state.favorites
+  favorites: state.results.filter((gif) => gif.favorited)
 })
 
 export default connect(mapStateToProps)(Favorites);

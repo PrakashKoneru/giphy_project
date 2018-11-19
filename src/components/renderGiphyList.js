@@ -1,13 +1,12 @@
 import React, { PureComponent } from 'react';
 import { Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
-import setGif from '../actions';
+import { setFavoriteAction } from '../action.creators';
 
 class GiphyList extends PureComponent {
-  setGif = (selectedGif) => this.props.setGif(selectedGif)
+  setGif = (selectedGif) => this.props.setFavoriteAction(selectedGif)
   render() {
     const { list } = this.props;
-
     if (!list || list.length === 0) return null;
     return (
       <Grid container spacing={8}>
@@ -21,4 +20,4 @@ class GiphyList extends PureComponent {
   }
 }
 
-export default connect(null, { setGif })(GiphyList);
+export default connect(null, { setFavoriteAction })(GiphyList);
